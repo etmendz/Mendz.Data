@@ -2,6 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Mendz</Authors>
+    <Company>Mendz</Company>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>https://github.com/etmendz/Mendz.Data</PackageProjectUrl>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <Copyright>© 2017 Mendz. All rights reserved.</Copyright>
+    <RepositoryUrl>https://github.com/etmendz/Mendz.Data</RepositoryUrl>
+    <PackageTags>data database context repository</PackageTags>
+    <Description>Provides tools and guidance for creating data access contexts and repositories.</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
 </Project>
