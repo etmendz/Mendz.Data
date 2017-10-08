@@ -60,19 +60,8 @@ DbDataContextBase | The base implementation of IDbDataContext.
 DbRepositoryBase | The base repository.
 EndTransactionMode | Enumerates the modes to end a transaction: to commit or to rollback.
 ResultInfoExtensions | Provides extenstions to ResultInfo.
-### Mendz.Data.Repository
-Unlike other "repository pattern" implementations that put all CRUDS (Create, Read, Update, Delete and Search) methods in a single repository interface, Mendz.Data.Repository defines each CRUDS method as individual interfaces. This allows for greater flexibility when creating repositories that work on models that may not need full CRUDS scaffolding. For example, immutable models can be created, read, deleted or searched but cannot be updated. Another example, readonly models can only read or searched but cannot be created, updated or deleted.
-#### Contents
-Name | Description
----- | -----------
-IDbDataCreatable | Defines a database data that can be created.
-IDbDataReadable | Defines a database data that can be read.
-IDbDataUpdatable | Defines a database data that can be updated.
-IDbDataDeletable | Defines a database data that can be deleted.
-IDbDataSearchable | Defines a database data that can be searched.
-DbRepositoryException | Represents a repository exception.
-
-Mendz.Data-aware repositories implement Mendz.Data.Common.DbRepositoryBase. Note that this base class expects a Mendz.Data-aware data context. Using Mendz.Data.SqlServer.SqlServerDbDataContext, a generic data context instance for ADO.Net-compatible data access, a repository skeleton can look like the following:
+#### DbRepositoryBase
+Mendz.Data-aware repositories implement DbRepositoryBase. Note that this base class expects a Mendz.Data-aware data context. For example, using Mendz.Data.SqlServer.SqlServerDbDataContext, a generic Mnedz.Data-aware data context instance for ADO.Net-compatible data access to SQL Server, a repository skeleton can look like the following:
 ```C#
     public class TestRepository : DbRepositoryBase<SqlServerDbDataContext>, IDbDataSearchable<Test>
     {
@@ -96,8 +85,19 @@ Which can be used, for example, in an ASP.NET MVC application's controller code 
         }
     }
 ```
+### Mendz.Data.Repository
+#### Contents
+Name | Description
+---- | -----------
+IDbDataCreatable | Defines a database data that can be created.
+IDbDataReadable | Defines a database data that can be read.
+IDbDataUpdatable | Defines a database data that can be updated.
+IDbDataDeletable | Defines a database data that can be deleted.
+IDbDataSearchable | Defines a database data that can be searched.
+DbRepositoryException | Represents a repository exception.
+
+Unlike other "repository pattern" implementations that put all CRUDS (Create, Read, Update, Delete and Search) methods in a single repository interface, Mendz.Data.Repository defines each CRUDS method as individual interfaces. This allows for greater flexibility when creating repositories that work on models that may not need full CRUDS scaffolding. For example, immutable models can be created, read, deleted or searched but cannot be updated. Another example, readonly models can only read or searched but cannot be created, updated or deleted.
 ### Mendz.Data.Repository.Async
-The Mendz.Data.Repository CRUDS interfaces have async versions in Mendz.Data.Repository.Async namespace. They are very similar in many ways, with the async versions adding the ability/option to pass cancellation tokens.
 #### Contents
 Name | Description
 ---- | -----------
@@ -106,5 +106,7 @@ IDbDataReadableAsync | Defines a database data that can be read asynchronously.
 IDbDataUpdatableAsync | Defines a database data that can be updated asynchronously.
 IDbDataDeletableAsync | Defines a database data that can be deleted asynchronously.
 IDbDataSearchableAsync | Defines a database data that can be searched asynchronously.
+
+The Mendz.Data.Repository CRUDS interfaces have async versions in Mendz.Data.Repository.Async namespace. They are very similar in many ways, with the async versions adding the ability/option to pass cancellation tokens.
 ## NuGet It...
 https://www.nuget.org/packages/Mendz.Data/
