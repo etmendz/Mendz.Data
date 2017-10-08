@@ -1,7 +1,7 @@
 # Mendz.Data
 Provides tools and guidance for creating data access contexts and repositories.
 ## Implementations
-* Mendz.Data.EntityFramework (coming soon...)
+* [Mendz.Data.EntityFramework](https://github.com/etmendz/Mendz.Data.EntityFramework)
 * [Mendz.Data.SqlServer](https://github.com/etmendz/Mendz.Data.SqlServer)
 * Mendz.Data.MongoDB (coming soon...)
 ## Namespaces
