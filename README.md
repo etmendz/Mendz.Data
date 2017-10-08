@@ -61,7 +61,7 @@ DbRepositoryBase | The base repository.
 EndTransactionMode | Enumerates the modes to end a transaction: to commit or to rollback.
 ResultInfoExtensions | Provides extenstions to ResultInfo.
 #### DbRepositoryBase
-Mendz.Data-aware repositories implement DbRepositoryBase. Note that this base class expects a Mendz.Data-aware data context. For example, using Mendz.Data.SqlServer.SqlServerDbDataContext, a generic Mnedz.Data-aware data context instance for ADO.Net-compatible data access to SQL Server, a repository skeleton can look like the following:
+Mendz.Data-aware repositories implement DbRepositoryBase. Note that this base class expects a Mendz.Data-aware data context. For example, using Mendz.Data.SqlServer.SqlServerDbDataContext, a generic Mendz.Data-aware data context instance for ADO.Net-compatible data access to SQL Server, a repository skeleton can look like the following:
 ```C#
     public class TestRepository : DbRepositoryBase<SqlServerDbDataContext>, IDbDataSearchable<Test>
     {
