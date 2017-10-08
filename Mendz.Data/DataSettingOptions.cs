@@ -14,7 +14,7 @@ namespace Mendz.Data
     ///             "SqlServerExpressConnectionString" : "connection string to Sql Server express (LocalDB)",
     ///             "SqlServerConnectionString" : "connection string to Sql Server",
     ///             "OracleConnectionString" : "connection string to Oracle",
-    ///             "MongoDBClient" : "MongoDB client specification"
+    ///             "MongoDBClient" : "MongoDB client specification",
     ///             "MongoDBContext" : "MongoDB context specification"
     ///         }
     ///     }
