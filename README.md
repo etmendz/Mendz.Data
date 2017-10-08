@@ -50,7 +50,7 @@ Let's say for example that you have a DbContext class library project. To make i
             optionsBuilder.UseSqlServer(DataSettingOptions.ConnectionStrings["EntityFrameworkConnectionString"]);
         }
 ```
-This approach makes the DbContext instance semi-self-initializing. It also removes the need for the DbContext instance to be registered in the application's Startup.ConfigureServices -- usually done via call to IServiceCollection.AddDbContext(). Thus, the application does not even need to be aware of the DbContext instance itself. Using Mendz.Data, it is possible for the application to reference only the models and repositories libraries, sheilding the application from being bound to specific data contexts.
+This approach makes the DbContext instance semi-self-initializing. It also removes the need for the DbContext instance to be registered in the application's Startup.ConfigureServices -- usually done via call to IServiceCollection.AddDbContext(). Thus, the application does not even need to be aware of the DbContext instance itself. Using Mendz.Data, it is possible for the application to reference only the models and repositories libraries, shielding the application from being bound to specific data contexts.
 ### Mendz.Data.Common
 #### Contents
 Name | Description
