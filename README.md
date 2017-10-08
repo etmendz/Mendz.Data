@@ -35,11 +35,11 @@ DataSettings and DataSettingOptions, therefore, assumes that appsettings.json co
 ```
 In the application startup or initialization routine, the DataSettings should be loaded into DataSettingOptions as follows:
 ```C#
-    public Startup(IConfiguration configuration)
-    {
-        Configuration = configuration;
-        DataSettingOptions.Initialize(Configuration.GetSection("DataSettings").Get<DataSettings>());
-    }
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+            DataSettingOptions.Initialize(Configuration.GetSection("DataSettings").Get<DataSettings>());
+        }
 ```
 From this point onwards, DataSettingOptions contains the collection of connection strings that may be needed by the application or by its Mendz.Data-aware class libraries.
 
