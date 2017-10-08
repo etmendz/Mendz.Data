@@ -1,11 +1,9 @@
 # Mendz.Data
 Provides tools and guidance for creating data access contexts and repositories.
 ## Implementations
-Name | Description
----- | -----------
-Mendz.Data.EntityFramework | Coming soon...
-Mendz.Data.SqlServer | Coming soon...
-Mendz.Data.MongoDB | Coming soon...
+* Mendz.Data.EntityFramework (coming soon...)
+* [Mendz.Data.SqlServer](https://github.com/etmendz/Mendz.Data.SqlServer)
+* Mendz.Data.MongoDB (coming soon...)
 ## Namespaces
 ### Mendz.Data
 #### Contents
@@ -61,7 +59,7 @@ DbRepositoryBase | The base repository.
 EndTransactionMode | Enumerates the modes to end a transaction: to commit or to rollback.
 ResultInfoExtensions | Provides extenstions to ResultInfo.
 #### DbRepositoryBase
-Mendz.Data-aware repositories implement DbRepositoryBase. Note that this base class expects a Mendz.Data-aware data context. For example, using Mendz.Data.SqlServer.SqlServerDbDataContext, a generic Mendz.Data-aware data context instance for ADO.Net-compatible data access to SQL Server, a repository skeleton can look like the following:
+Mendz.Data-aware repositories implement DbRepositoryBase. Note that this base class expects a Mendz.Data-aware data context. For example, using Mendz.Data.SqlServer.SqlServerDbDataContext, a generic Mendz.Data-aware context for ADO.Net-compatible access to SQL Server databases, a repository skeleton can look like the following:
 ```C#
     public class TestRepository : DbRepositoryBase<SqlServerDbDataContext>, IDbDataSearchable<Test>
     {
