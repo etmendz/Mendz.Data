@@ -72,7 +72,7 @@ Mendz.Data-aware repositories implement DbRepositoryBase. Note that this base cl
     }
 ```
 Which can be used, for example, in an ASP.NET MVC application's controller code as follows:
-```
+```C#
     public class TestController : Controller
     {
         // GET: Test
