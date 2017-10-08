@@ -67,7 +67,7 @@ Mendz.Data-aware repositories implement DbRepositoryBase. Note that this base cl
     {
         public IEnumerable<Test> Search<F, S>(F filter, S sort, dynamic expansion = null, PagingInfo paging = null, List<ResultInfo> result = null)
         {
-            ....
+            ...
         }
     }
 ```
