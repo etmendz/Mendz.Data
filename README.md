@@ -94,7 +94,7 @@ IDbDataDeletable | Defines a database data that can be deleted.
 IDbDataSearchable | Defines a database data that can be searched.
 DbRepositoryException | Represents a repository exception.
 
-Unlike other "repository pattern" implementations that put all CRUDS (Create, Read, Update, Delete and Search) methods in a single repository interface, Mendz.Data.Repository defines each CRUDS method as individual interfaces. This allows for greater flexibility when creating repositories that work on models that may not need full CRUDS scaffolding. For example, immutable models can be created, read, deleted or searched but cannot be updated. Another example, readonly models can only read or searched but cannot be created, updated or deleted.
+Unlike other "repository pattern" implementations that put all CRUDS (Create, Read, Update, Delete and Search) methods in a single repository interface, Mendz.Data.Repository defines each CRUDS method as individual interfaces. This allows for greater flexibility when creating repositories that work on models that may not need full CRUDS scaffolding. For example, immutable models can be created, read, deleted or searched but cannot be updated. Another example, readonly models can only be read or searched but cannot be created, updated or deleted.
 ### Mendz.Data.Repository.Async
 #### Contents
 Name | Description
