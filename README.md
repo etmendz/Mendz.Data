@@ -1,9 +1,9 @@
 # Mendz.Data
 Provides tools and guidance for creating data access contexts and repositories.
 ## Implementations
-* ~[Mendz.Data.EntityFramework](https://github.com/etmendz/Mendz.Data.EntityFramework)~
 * [Mendz.Data.SqlServer](https://github.com/etmendz/Mendz.Data.SqlServer)
 * Mendz.Data.MongoDB (coming soon...)
+* [Mendz.Data.EntityFramework](https://github.com/etmendz/Mendz.Data.EntityFramework) **Obsolete** Mendz.Data.EntityFramework 1.0.0 is compatible only with Mendz.Data 1.0.0. The new recommendation is to use Mendz.Data 1.1.0 to define EF repositories derived from Mendz.Data.Common.DbRepositoryBase.
 ## Namespaces
 ### Mendz.Data
 #### Contents
@@ -54,8 +54,9 @@ This approach makes the DbContext instance semi-self-initializing. It also remov
 Name | Description
 ---- | -----------
 IDbDataContext | Defines a database context.
-DbDataContextBase | The base implementation of a database context.
+IDbDataTransaction | Defines a database/context transaction.
 GenericDbDataContextBase | The base implementation of a generic database context.
+DbDataContextBase | The base implementation of a database context.
 DbRepositoryBase | The base repository.
 EndTransactionMode | Enumerates the modes to end a transaction: to commit or to rollback.
 ResultInfoExtensions | Provides extenstions to ResultInfo.
