@@ -1,41 +1,27 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 
 namespace Mendz.Data.Common
 {
     /// <summary>
-    /// The base implementation of IDbDataContext.
+    /// The base implementation of a database context.
     /// </summary>
-    public abstract class DbDataContextBase : IDbDataContext
+    public abstract class DbDataContextBase : GenericDbDataContextBase<IDbConnection>, IDbDataTransaction<IDbTransaction>, IDisposable
     {
-        /// <summary>
-        /// Builds the context instance.
-        /// </summary>
-        /// <returns>The context instance.</returns>
-        protected abstract IDbConnection BuildContext();
-
-        #region IDbDataContext Support
-        protected IDbConnection _context = null;
-        public IDbConnection Context {
-            get
+        public override void CreateContext()
+        {
+            if (_context == null)
             {
-                CreateContext();
-                return _context;
+                base.CreateContext();
+                _context.Open();
             }
         }
 
+        #region IDbDataTransaction Support
         protected IDbTransaction _transaction = null;
         public IDbTransaction Transaction
         {
             get => _transaction;
-        }
-
-        public virtual void CreateContext()
-        {
-            if (_context == null)
-            {
-                _context = BuildContext();
-                _context.Open();
-            }
         }
 
         public virtual void BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
@@ -76,7 +62,7 @@ namespace Mendz.Data.Common
                 {
                     if (_transaction != null)
                     {
-                    _transaction.Dispose();
+                        _transaction.Dispose();
                     }
                     if (_context != null)
                     {

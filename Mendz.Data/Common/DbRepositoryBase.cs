@@ -7,12 +7,12 @@ namespace Mendz.Data.Common
     /// </summary>
     /// <typeparam name="D">The database context.</typeparam>
     public abstract class DbRepositoryBase<D> : IDisposable
-        where D : IDbDataContext, new()
+        where D : new()
     {
         /// <summary>
         /// Gets or sets the database context.
         /// </summary>
-        protected IDbDataContext DbDataContext { get; set; }
+        protected D DbDataContext { get; set; }
 
         /// <summary>
         /// Gets or sets if the current instance is the owner of the database context.
@@ -28,7 +28,7 @@ namespace Mendz.Data.Common
         /// Creates a repository that shares a database context.
         /// </summary>
         /// <param name="dbDataContext">The database context to share.</param>
-        protected DbRepositoryBase(IDbDataContext dbDataContext) => DbDataContext = dbDataContext;
+        protected DbRepositoryBase(D dbDataContext) => DbDataContext = dbDataContext;
 
         protected void CreateDbDataContext()
         {
@@ -50,8 +50,10 @@ namespace Mendz.Data.Common
                 {
                     if (DbDataContextOwner)
                     {
-                        DbDataContext.Dispose();
-                        disposed = true;
+                        if (DbDataContext is IDisposable dbdc)
+                        {
+                            dbdc.Dispose();
+                        }
                     }
                 }
                 disposed = true;

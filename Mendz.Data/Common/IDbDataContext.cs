@@ -1,38 +1,19 @@
-﻿using System;
-using System.Data;
-
-namespace Mendz.Data.Common
+﻿namespace Mendz.Data.Common
 {
     /// <summary>
     /// Defines a database context.
     /// </summary>
-    public interface IDbDataContext : IDisposable
+    /// <typeparam name="C">The context type.</typeparam>
+    public interface IDbDataContext<C>
     {
         /// <summary>
         /// Gets the context instance.
         /// </summary>
-        IDbConnection Context { get; }
-
-        /// <summary>
-        /// Gets the transaction.
-        /// </summary>
-        IDbTransaction Transaction { get; }
+        C Context { get; }
 
         /// <summary>
         /// Creates a context instance.
         /// </summary>
         void CreateContext();
-
-        /// <summary>
-        /// Begins a transaction.
-        /// </summary>
-        /// <param name="isolationLevel">The transaction's isolation level.</param>
-        void BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted);
-
-        /// <summary>
-        /// Ends a transaction.
-        /// </summary>
-        /// <param name="mode">The transaction mode to commit or rollback.</param>
-        void EndTransaction(EndTransactionMode mode = EndTransactionMode.Commit);
     }
 }
