@@ -1,5 +1,5 @@
 # Mendz.Data
-Provides tools and guidance for creating data access contexts and repositories.
+Provides tools and guidance for creating data access contexts and repositories. [Wiki](https://github.com/etmendz/Mendz.Data/wiki)
 ## Implementations
 * [Mendz.Data.SqlServer](https://github.com/etmendz/Mendz.Data.SqlServer)
 * [Mendz.Data.MongoDB](https://github.com/etmendz/Mendz.Data.MongoDB)
