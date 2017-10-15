@@ -3,7 +3,6 @@ Provides tools and guidance for creating data access contexts and repositories. 
 ## Implementations
 * [Mendz.Data.SqlServer](https://github.com/etmendz/Mendz.Data.SqlServer)
 * [Mendz.Data.MongoDB](https://github.com/etmendz/Mendz.Data.MongoDB)
-* ~Mendz.Data.EntityFramework~ **Obsolete** Mendz.Data.EntityFramework 1.0.0 is compatible only with Mendz.Data 1.0.0. The recommendation is to use Mendz.Data 1.1.0 or higher to define EF repositories derived from Mendz.Data.Common.DbRepositoryBase. See [Mendz.Data Wiki](https://github.com/etmendz/Mendz.Data/wiki) for recommendation and samples.
 ## Namespaces
 ### Mendz.Data
 #### Contents
