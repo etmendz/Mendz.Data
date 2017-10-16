@@ -56,8 +56,8 @@ IDbDataContext | Defines a database context.
 IDbDataTransaction | Defines a database/context transaction.
 GenericDbDataContextBase | The base implementation of a generic database context.
 DbDataContextBase | The base implementation of a database context.
-DbRepositoryBase | The base repository.
 EndTransactionMode | Enumerates the modes to end a transaction: to commit or to rollback.
+DbRepositoryBase | The base repository.
 ResultInfoExtensions | Provides extenstions to ResultInfo.
 EntityFrameworkDataSettingOption | Provides the data setting options for DbContext instance access.
 #### DbRepositoryBase
