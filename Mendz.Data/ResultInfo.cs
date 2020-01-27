@@ -15,12 +15,16 @@ namespace Mendz.Data
         /// <summary>
         /// Gets or sets the input values.
         /// </summary>
+#pragma warning disable CA2227 // Collection properties should be read only
         public Dictionary<string, object> InputValues { get; set; }
+#pragma warning restore CA2227 // Collection properties should be read only
 
         /// <summary>
         /// Gets or sets the output values.
         /// </summary>
+#pragma warning disable CA2227 // Collection properties should be read only
         public Dictionary<string, object> OutputValues { get; set; }
+#pragma warning restore CA2227 // Collection properties should be read only
 
         /// <summary>
         /// Gets or sets a count of affected data.
@@ -36,7 +40,9 @@ namespace Mendz.Data
         /// Gets or sets a list of result information.
         /// </summary>
         /// <remarks> This is useful in sequential, transactional and/or nested operations.</remarks>
+#pragma warning disable CA2227 // Collection properties should be read only
         public List<List<ResultInfo>> ResultInfos { get; set; } = new List<List<ResultInfo>>();
+#pragma warning restore CA2227 // Collection properties should be read only
 
         /// <summary>
         /// Initializes a ResultInfo.
@@ -52,6 +58,7 @@ namespace Mendz.Data
             InputValues = inputValues;
             OutputValues = outputValues;
             AffectedCount = affectedCount;
+            TotalCount = totalCount;
         }
 
         /// <summary>
@@ -62,9 +69,7 @@ namespace Mendz.Data
         /// <param name="affectedCount">The count of affected data.</param>
         /// <param name="totalCount">The total count of data read/passed.</param>
         public ResultInfo(string sourceName, Dictionary<string, object> outputValues, int affectedCount = 0, int totalCount = 0)
-            : this(sourceName, null, outputValues, affectedCount, totalCount)
-        {
-        }
+            : this(sourceName, null, outputValues, affectedCount, totalCount) { }
 
         /// <summary>
         /// Initializes a ResultInfo.
@@ -73,8 +78,6 @@ namespace Mendz.Data
         /// <param name="affectedCount">The count of affected data.</param>
         /// <param name="totalCount">The total count of data read/passed.</param>
         public ResultInfo(string sourceName, int affectedCount, int totalCount = 0)
-            : this(sourceName, null, null, affectedCount, totalCount)
-        {
-        }
+            : this(sourceName, null, null, affectedCount, totalCount) { }
     }
 }

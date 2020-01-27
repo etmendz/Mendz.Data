@@ -12,15 +12,15 @@ namespace Mendz.Data.Repository
         /// <summary>
         /// Searches the model.
         /// </summary>
-        /// <typeparam name="F">The filter type.</typeparam>
-        /// <typeparam name="S">The sort type.</typeparam>
+        /// <typeparam name="TFilter">The filter type.</typeparam>
+        /// <typeparam name="TSort">The sort type.</typeparam>
         /// <param name="filter">The filter keys.</param>
         /// <param name="sort">The sort keys.</param>
         /// <param name="expansion">Additional data to use in the search operation.</param>
         /// <param name="paging">The PagingInfo.</param>
         /// <param name="result">The list of ResultInfo.</param>
         /// <returns>The enumerable result of models found.</returns>
-        IEnumerable<T> Search<F, S>(F filter, S sort, dynamic expansion = null, 
+        IEnumerable<T> Search<TFilter, TSort>(TFilter filter, TSort sort, dynamic expansion = null, 
             PagingInfo paging = null, List<ResultInfo> result = null);
     }
 }

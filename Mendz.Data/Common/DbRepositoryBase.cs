@@ -5,14 +5,14 @@ namespace Mendz.Data.Common
     /// <summary>
     /// The base repository.
     /// </summary>
-    /// <typeparam name="D">The database context.</typeparam>
-    public abstract class DbRepositoryBase<D> : IDisposable
-        where D : new()
+    /// <typeparam name="TDbDataContext">The database context.</typeparam>
+    public abstract class DbRepositoryBase<TDbDataContext> : IDisposable
+        where TDbDataContext : new()
     {
         /// <summary>
         /// Gets or sets the database context.
         /// </summary>
-        protected D DbDataContext { get; set; }
+        protected TDbDataContext DbDataContext { get; set; }
 
         /// <summary>
         /// Gets or sets if the current instance is the owner of the database context.
@@ -28,13 +28,13 @@ namespace Mendz.Data.Common
         /// Creates a repository that shares a database context.
         /// </summary>
         /// <param name="dbDataContext">The database context to share.</param>
-        protected DbRepositoryBase(D dbDataContext) => DbDataContext = dbDataContext;
+        protected DbRepositoryBase(TDbDataContext dbDataContext) => DbDataContext = dbDataContext;
 
         protected void CreateDbDataContext()
         {
             if (DbDataContext == null)
             {
-                DbDataContext = new D();
+                DbDataContext = new TDbDataContext();
                 DbDataContextOwner = true;
             }
         }
@@ -50,17 +50,18 @@ namespace Mendz.Data.Common
                 {
                     if (DbDataContextOwner)
                     {
-                        if (DbDataContext is IDisposable dbdc)
-                        {
-                            dbdc.Dispose();
-                        }
+                        if (DbDataContext is IDisposable dbdc) dbdc.Dispose();
                     }
                 }
                 disposed = true;
             }
         }
 
-        public void Dispose() => Dispose(true);
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
         #endregion
     }
 }

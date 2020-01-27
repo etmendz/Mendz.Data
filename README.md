@@ -66,7 +66,7 @@ Mendz.Data-aware repositories implement DbRepositoryBase. Note that this base cl
 ```C#
     public class TestRepository : DbRepositoryBase<SqlServerDbDataContext>, IDbDataSearchable<Test>
     {
-        public IEnumerable<Test> Search<F, S>(F filter, S sort, dynamic expansion = null, PagingInfo paging = null, List<ResultInfo> result = null)
+        public IEnumerable<Test> Search<TFilter, TSort>(TFilter filter, TSort sort, dynamic expansion = null, PagingInfo paging = null, List<ResultInfo> result = null)
         {
             ...
         }
@@ -102,11 +102,11 @@ Unlike other "repository pattern" implementations that put all CRUDS (Create, Re
 #### Contents
 Name | Description
 ---- | -----------
-IDbDataCreatableAsync | Defines a database data that can be created asynchronously.
-IDbDataReadableAsync | Defines a database data that can be read asynchronously.
-IDbDataUpdatableAsync | Defines a database data that can be updated asynchronously.
-IDbDataDeletableAsync | Defines a database data that can be deleted asynchronously.
-IDbDataSearchableAsync | Defines a database data that can be searched asynchronously.
+IAsyncDbDataCreatable | Defines a database data that can be created asynchronously.
+IAsyncDbDataReadable | Defines a database data that can be read asynchronously.
+IAsyncDbDataUpdatable | Defines a database data that can be updated asynchronously.
+IAsyncDbDataDeletable | Defines a database data that can be deleted asynchronously.
+IAsyncDbDataSearchable | Defines a database data that can be searched asynchronously.
 
 The Mendz.Data.Repository CRUDS interfaces have async versions in Mendz.Data.Repository.Async namespace. They are very similar in many ways, with the async versions adding the ability/option to pass cancellation tokens.
 ## NuGet It...

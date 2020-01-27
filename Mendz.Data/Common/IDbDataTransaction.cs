@@ -5,13 +5,13 @@ namespace Mendz.Data.Common
     /// <summary>
     /// Defines a database transaction.
     /// </summary>
-    /// <typeparam name="T">The transaction type.</typeparam>
-    public interface IDbDataTransaction<T>
+    /// <typeparam name="TTransaction">The transaction type.</typeparam>
+    public interface IDbDataTransaction<TTransaction>
     {
         /// <summary>
         /// Gets the transaction.
         /// </summary>
-        T Transaction { get; }
+        TTransaction Transaction { get; }
 
         /// <summary>
         /// Begins a transaction.

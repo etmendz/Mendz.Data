@@ -10,43 +10,39 @@ namespace Mendz.Data.Common
     {
         public override void CreateContext()
         {
-            if (_context == null)
+            if (Context == null)
             {
                 base.CreateContext();
-                _context.Open();
+                Context.Open();
             }
         }
 
         #region IDbDataTransaction Support
-        protected IDbTransaction _transaction = null;
-        public IDbTransaction Transaction
-        {
-            get => _transaction;
-        }
+        public IDbTransaction Transaction { get; protected set; }
 
         public virtual void BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
         {
-            if (_transaction == null)
+            if (Transaction == null)
             {
                 CreateContext();
-                _transaction = _context.BeginTransaction(isolationLevel);
+                Transaction = Context.BeginTransaction(isolationLevel);
             }
         }
 
         public virtual void EndTransaction(EndTransactionMode mode = EndTransactionMode.Commit)
         {
-            if (_transaction != null)
+            if (Transaction != null)
             {
                 if (mode == EndTransactionMode.Commit)
                 {
-                    _transaction.Commit();
+                    Transaction.Commit();
                 }
                 else
                 {
-                    _transaction.Rollback();
+                    Transaction.Rollback();
                 }
-                _transaction.Dispose();
-                _transaction = null;
+                Transaction.Dispose();
+                Transaction = null;
             }
         }
         #endregion
@@ -60,20 +56,18 @@ namespace Mendz.Data.Common
             {
                 if (disposing)
                 {
-                    if (_transaction != null)
-                    {
-                        _transaction.Dispose();
-                    }
-                    if (_context != null)
-                    {
-                        _context.Dispose();
-                    }
+                    if (Transaction != null) Transaction.Dispose();
+                    if (Context != null) Context.Dispose();
                 }
                 disposed = true;
             }
         }
 
-        public void Dispose() => Dispose(true);
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
         #endregion
     }
 }

@@ -1,5 +1,4 @@
-﻿using Mendz.Data;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -9,7 +8,7 @@ namespace Mendz.Data.Repository.Async
     /// Defines a database data that can be read asynchronously.
     /// </summary>
     /// <typeparam name="T">The model to read.</typeparam>
-    public interface IDbDataReadableAsync<T>
+    public interface IAsyncDbDataReadable<T>
     {
         /// <summary>
         /// Reads the model asynchronously.

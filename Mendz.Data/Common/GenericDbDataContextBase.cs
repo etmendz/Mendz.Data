@@ -5,30 +5,28 @@ namespace Mendz.Data.Common
     /// <summary>
     /// The base implementation of a generic database context.
     /// </summary>
-    public abstract class GenericDbDataContextBase<C> : IDbDataContext<C>
+    public abstract class GenericDbDataContextBase<TContext> : IDbDataContext<TContext>
     {
         /// <summary>
         /// Builds the context instance.
         /// </summary>
         /// <returns>The context instance.</returns>
-        protected abstract C BuildContext();
+        protected abstract TContext BuildContext();
 
         #region IDbDataContext Support
-        protected C _context = default(C);
-        public C Context {
+        private TContext _context = default;
+        public TContext Context {
             get
             {
                 CreateContext();
                 return _context;
             }
+            protected set => _context = value;
         }
 
         public virtual void CreateContext()
         {
-            if (_context == null)
-            {
-                _context = BuildContext();
-            }
+            if (_context == null) _context = BuildContext();
         }
         #endregion
     }

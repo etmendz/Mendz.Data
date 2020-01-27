@@ -3,13 +3,13 @@
     /// <summary>
     /// Defines a database context.
     /// </summary>
-    /// <typeparam name="C">The context type.</typeparam>
-    public interface IDbDataContext<C>
+    /// <typeparam name="TContext">The context type.</typeparam>
+    public interface IDbDataContext<TContext>
     {
         /// <summary>
         /// Gets the context instance.
         /// </summary>
-        C Context { get; }
+        TContext Context { get; }
 
         /// <summary>
         /// Creates a context instance.

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Mendz.Data
 {
@@ -11,6 +12,7 @@ namespace Mendz.Data
     /// {
     ///     "DataSettings": {
     ///         "ConnectionStrings": {
+    ///             "EntityFrameworkConnectionString" : "connection string for EF"
     ///             "SqlServerExpressConnectionString" : "connection string to Sql Server express (LocalDB)",
     ///             "SqlServerConnectionString" : "connection string to Sql Server",
     ///             "OracleConnectionString" : "connection string to Oracle",
@@ -31,9 +33,9 @@ namespace Mendz.Data
     public static class DataSettingOptions
     {
         /// <summary>
-        /// Gets or sets the collection of named connection strings.
+        /// Gets the collection of named connection strings.
         /// </summary>
-        public static Dictionary<string, string> ConnectionStrings { get; set; } = new Dictionary<string, string>();
+        public static Dictionary<string, string> ConnectionStrings { get; } = new Dictionary<string, string>();
 
         /// <summary>
         /// Initializes from a DataSettings instance.
@@ -41,6 +43,7 @@ namespace Mendz.Data
         /// <param name="dataSettings">The DataSettings instance.</param>
         public static void Initialize(DataSettings dataSettings)
         {
+            if (dataSettings == null) throw new ArgumentNullException(nameof(dataSettings));
             foreach (var connectionString in dataSettings.ConnectionStrings)
             {
                 ConnectionStrings.Add(connectionString.Key, connectionString.Value);

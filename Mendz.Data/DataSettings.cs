@@ -16,11 +16,12 @@ namespace Mendz.Data
     /// {
     ///     "DataSettings": {
     ///         "ConnectionStrings": {
+    ///             "EntityFrameworkConnectionString" : "connection string for EF"
     ///             "SqlServerExpressConnectionString" : "connection string to Sql Server express (LocalDB)",
     ///             "SqlServerConnectionString" : "connection string to Sql Server",
     ///             "OracleConnectionString" : "connection string to Oracle",
     ///             "MongoDBClient" : "MongoDB client specification",
-    ///             "MongoDBContext" : "MongoDB context specification"
+    ///             "MongoDBContext" : "MongoDB context specification",
     ///         }
     ///     }
     /// }
@@ -38,6 +39,8 @@ namespace Mendz.Data
         /// <summary>
         /// The collection of named connection strings.
         /// </summary>
+#pragma warning disable CA2227 // Collection properties should be read only
         public Dictionary<string, string> ConnectionStrings { get; set; }
+#pragma warning restore CA2227 // Collection properties should be read only
     }
 }
